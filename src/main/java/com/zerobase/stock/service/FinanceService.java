@@ -25,7 +25,7 @@ public class FinanceService {
     private final CompanyRepository companyRepository;
     private final DividendRepository dividendRepository;
 
-    //@Cacheable(key = "#companyName",value = CacheKey.KEY_FINANCE)
+    @Cacheable(key = "#companyName",value = CacheKey.KEY_FINANCE)
     public ScrapedResult getDividendByCompanyName(String companyName){
         //회사명 기준으로 회사 정보를 조회
         CompanyEntity company = companyRepository.findByName(companyName)

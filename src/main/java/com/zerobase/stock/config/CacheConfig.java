@@ -1,10 +1,7 @@
 package com.zerobase.stock.config;
 
 import lombok.RequiredArgsConstructor;
-/*
-import org.redisson.Redisson;
-import org.redisson.api.RedissonClient;
-import org.redisson.config.Config;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
@@ -17,13 +14,12 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-*/
 
-//@Configuration
+@Configuration
 @RequiredArgsConstructor
 public class CacheConfig {
 
-   /* @Value("${spring.redis.host}")
+    @Value("${spring.redis.host}")
     private String redisHost;
 
     @Value("${spring.redis.port}")
@@ -46,5 +42,5 @@ public class CacheConfig {
         conf.setHostName(redisHost);
         conf.setPort(redisPort);
         return new LettuceConnectionFactory(conf);
-    }*/
+    }
 }

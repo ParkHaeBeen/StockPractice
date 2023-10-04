@@ -1,9 +1,11 @@
 package com.zerobase.stock.web;
 
 import com.zerobase.stock.model.Company;
+import com.zerobase.stock.model.constant.CacheKey;
 import com.zerobase.stock.persisit.entity.CompanyEntity;
 import com.zerobase.stock.service.CompanyService;
 import lombok.AllArgsConstructor;
+import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import java.util.List;
 public class CompanyController {
     private final CompanyService companyService;
 
-    //private final CacheManager redisCacheManager;
+    private final CacheManager redisCacheManager;
     @GetMapping("/autocomplete")
     public ResponseEntity<?> autoComplete(@RequestParam String keyword){
         // List<String> autocomplete = companyService.autocomplete(keyword);
@@ -57,6 +59,6 @@ public class CompanyController {
     }
 
     public void clearFinanceCache(String companyName){
-        //redisCacheManager.getCache(CacheKey.KEY_FINANCE).evict(companyName);
+        redisCacheManager.getCache(CacheKey.KEY_FINANCE).evict(companyName);
     }
 }
